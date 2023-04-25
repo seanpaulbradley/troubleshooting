@@ -45,7 +45,7 @@ differror = (syncpulsetimes_cor-anydata_crop.Time)*1000;
 %Between frames ~2868 and 3000 (around 4.5s) the disparity jumps from ~70 ms to ~250 ms. 
 %It doesn't make sense to me why errors would seemingly propogate in this
 %fashion; in theory, this method should be resilient to dropped frames or
-%other timing errors because 
+%other timing errors because each frame's sync pulse is generated independently.  So, I'm confused.
 differrorplot = plot(differror)
 hold on
 xlabel("Frame")
