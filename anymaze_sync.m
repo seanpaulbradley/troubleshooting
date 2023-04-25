@@ -29,11 +29,11 @@ cuetimes = table(tdtcuetimes, anymazetimes, timecomparison)
 
 %Cut off junk 0 observation on anymaze
 anydata = anydata(2:end,:)
-%% Subtract out onset correction of about 17 seconds
+% Subtract out onset correction of about 17 seconds
 syncpulsetimes_cor = tdtframes-timecomparison(1)
 
-What we want to happen: an exact(ish) match of the number and timing of anymaze observations and sync pulses sent to TDT
-What we have:
+%%What we want to happen: an exact(ish) match of the number and timing of anymaze observations and sync pulses sent to TDT
+%%What we have:
 % Disparity in frame counts: Any maze has 57 more observations than TDT has
 % sync pulses
 framedisp = numel(syncpulsetimes_cor)-numel(anydata.Time)
