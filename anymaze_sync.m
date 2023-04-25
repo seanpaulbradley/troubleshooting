@@ -34,6 +34,7 @@ syncpulsetimes_cor = tdtframes-timecomparison(1)
 
 %%What we want to happen: an exact(ish) match of the number and timing of anymaze observations and sync pulses sent to TDT
 %%What we have:
+
 % Disparity in frame counts: Any maze has 57 more observations than TDT has
 % sync pulses
 framedisp = numel(syncpulsetimes_cor)-numel(anydata.Time)
