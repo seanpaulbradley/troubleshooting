@@ -38,15 +38,13 @@ syncpulsetimes_cor = tdtframes-timecomparison(1)
 % Disparity in frame counts: Any maze has 57 more observations than TDT has
 % sync pulses
 framedisp = numel(syncpulsetimes_cor)-numel(anydata.Time)
-%Disparity in frame timing in ms (aligning frames start to finish and cropping 58
-%excess anymaze frames) averages 1s over the whole of the session,
+%Disparity in frame timing in ms (aligning frames start to finish and truncating) averages 1s over the whole of the session,
 %seemingly caused by stochastic increases in disparity (non-smooth).
 anydata_crop = anydata(1:end-57,:)
 differror = (syncpulsetimes_cor-anydata_crop.Time)*1000;
 %Between frames ~2868 and 3000 (around 4.5s) the disparity jumps from ~70 ms to ~250 ms. 
-%It doesn't make sense to me why errors would seemingly propogate in this
-%fashion; in theory, this method should be resilient to dropped frames or
-%other timing errors because each frame's sync pulse is generated independently.  So, I'm confused.
+%The 57 dropped frames roughly correspond to a duration equal to the max disparity observed in late frames
+%So, either Any-maze isn't sending the pulse each frame that it says it is, or TDT isn't receiving it.
 differrorplot = plot(differror)
 hold on
 xlabel("Frame")
